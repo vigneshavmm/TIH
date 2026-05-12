@@ -17,7 +17,7 @@ To provide a unified, reproducible codebase for geospatial analysis tasks undert
 - GeoPandas
 - Shapely
 - Rasterio
-- Folium or Matplotlib (for visualization)
+- Folium & Matplotlib (for visualization)
 
 Install dependencies:
 ```bash
