@@ -1,0 +1,146 @@
+bro just set the CRS to EPSG:4326 and called it a day. the river is now in space.
+
+me: i need to find shortest path
+also me: adds negative edge weights to the graph
+dijkstra: i am leaving
+
+the satellite image has 40% cloud cover. the model predicted clouds as "urban fabric". the client is happy.
+
+my model accuracy is 99%. my validation set has 1 sample.
+
+asked chatgpt to write a geospatial pipeline. it imported arcpy. i don't have arcpy. i don't have arcgis. i have trauma.
+
+bro forgot to reproject before the spatial join. the polygons are in the ocean now. this is fine.
+
+NDVI value: -0.7
+me: so the vegetation is dying?
+also me: that's a cloud shadow bro
+
+day 1: i will build a clean modular geospatial pipeline
+day 3: one python file, 800 lines, no comments, variable named temp2_final_FINAL_v3
+
+the raster has 10m resolution. i resampled it to 1m. i told the client it's higher quality now.
+
+me: let me just do a quick buffer analysis
+shapely: your geometries are invalid
+me: ok
+shapely: no like really invalid
+me: ok
+shapely: one of your polygons is a line
+me: ok i will cry
+
+forgot to fill DEM sinks before watershed delineation. the water flows uphill now. realistic for this project.
+
+OSMnx downloaded the entire road network of India instead of just the district. my RAM left the chat.
+
+bro said "i'll just use Web Mercator for area calculation". bro calculated area of Antarctica as 6 parking lots.
+
+the client asked for real-time satellite imagery updates. the satellite revisit time is 5 days. i said yes.
+
+pip install gdal
+error: could not find gdal-config
+me: ah yes, classic tuesday
+
+trained the land cover model on Sentinel-2. tested on Landsat. the forests are now water bodies. the water bodies are now airports.
+
+me: let me just check if the geometries are valid
+geopandas: [returns True for a polygon that is clearly a pretzel]
+
+bro ran the model on the wrong year's imagery. confidently presented deforestation that was actually reforestation. the trees are thriving. the presentation was not.
+
+my coordinate is 0, 0. it is in the Atlantic Ocean. i projected wrong. this is the null island problem. i live here now.
+
+the DEM had nodata values set to -9999. i forgot to mask them. the mean elevation of the study area is now -6823 meters. we are underground.
+
+asked the intern to collect ground truth points. he collected them all from Google Maps. the validation accuracy is spiritually meaningless.
+
+spatial join took 3 hours without an index. added STRtree. took 4 seconds. i lost 3 hours of my life for a lesson google could have taught me in 30 seconds.
+
+the polygon has 2 million vertices. i did not simplify it. the buffer operation is still running. i am watching it. we have a bond now.
+
+client: can we do this analysis for every district in India?
+me: sure
+me internally: i have 8GB RAM and a dream
+
+bro used float64 for a raster with 1 billion pixels. the array is 8GB. the swap file is crying. the fan is screaming. the laptop is a heater now.
+
+me: i'll just visualize this quickly in folium
+folium: opens in browser
+browser: this file is 400MB
+browser: goodbye
+
+the model said the lake is a building. the building is a lake. the road is vegetation. the vegetation is a road. we call this a creative interpretation.
+
+zonal statistics on 10,000 polygons with no spatial index. i submitted the job friday. it is now monday. it is still running. i respect it.
+
+pip install rasterio
+error
+pip install gdal first
+error
+sudo apt install libgdal-dev
+error
+me: i will use numpy and cry
+
+the accuracy is 94%. the kappa is 0.12. nobody asked about kappa. i will not bring up kappa.
+
+me: just a small script to automate the workflow
+6 months later: 47 files, 3 conda environments, a bash script that only works on my machine, and a README that says "TODO"
+
+forgot to set nodata value when exporting. the receiving team imported it. they are now doing analysis on nodata pixels. the results are groundbreaking.
+
+geopandas merge: left join
+me: wait where did my features go
+also me: 40% of IDs had trailing whitespace
+me: ok
+
+ran out of disk space mid-export. the GGUF file is half written. the model thinks it is a jpeg now.
+
+client: we need this by tomorrow
+the satellite: it will pass over the study area in 11 days
+me: i will use old imagery and not mention it
+
+the road network graph has 4 million edges. i did not simplify it. the isochrone calculation is a meditation exercise now.
+
+bro mixed up latitude and longitude. the study area is now in Kazakhstan. the land cover there is also correct. coincidentally.
+
+me: i'll train on 128x128 tiles
+also me: the study area is 0.003 tiles
+me: we work with what we have
+
+the temporal composite has one image. it was 80% cloudy. it is a composite of clouds. the clouds are very well classified.
+
+overfit the model to training data. validation loss: 0.02. test accuracy on new imagery: predicts everything as water. the earth is mostly water so statistically fine.
+
+me: quick sanity check, let me plot the geometries
+matplotlib: [renders for 45 seconds]
+matplotlib: [displays a black rectangle]
+me: yep that looks right
+
+the reprojection introduced sub-pixel shift. nobody will notice. i will notice. i will think about it at 3am.
+
+segmentation model predicted a perfect circle as a building. it is a roundabout. same energy.
+
+the dataset has 12 classes. the model learned 3 of them confidently. the other 9 are predicted as "scrubland" which is the most common class. this is called a class imbalance and also my personality.
+
+conda environment corrupted mid-training. i lost 6 hours of training. i am fine. this is fine. everything is fine.
+
+me: i'll use cloud-optimized GeoTIFF for efficiency
+also me: opens the entire file into memory anyway
+me: the format tried its best
+
+asked the model to detect water bodies. it detected swimming pools, puddles, wet roads, shadows, and one very shiny car. it is not wrong exactly.
+
+bro computed Haversine distance in kilometers and joined to a column that was in meters. the nearest hospital is 47000 kilometers away. everyone walks there.
+
+my pipeline has 14 steps. step 8 fails silently. steps 9 through 14 run successfully on garbage. the output is confident and very wrong.
+
+the shapefile column name limit is 10 characters. my column is named "land_use_classification_final_v2". it became "land_use_c". i spent 20 minutes wondering why the merge failed.
+
+me after fixing the CRS mismatch: everything is fine now
+me 10 minutes later: why is the area negative
+me: oh i see
+
+the k in Q2_K stands for something. i do not know what. the model works anyway. we do not ask questions. we run inference.
+
+tile size 256. overlap 64. the model hallucinates a seam artifact every 192 pixels. it is perfectly regular. it is haunting.
+

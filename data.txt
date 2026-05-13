@@ -1,0 +1,134 @@
+The coordinates 17.6868° N, 83.2185° E mark the coastal city of Visakhapatnam in Andhra Pradesh, India. The Bay of Bengal lies to the east, while the Eastern Ghats form a natural boundary to the west.
+
+A bounding box defined by min_lon=79.0, min_lat=12.6, max_lon=84.7, max_lat=19.9 covers the entire state of Andhra Pradesh. Any geometry falling outside this extent is considered out of region.
+
+Land use classification divides the surface into categories: urban fabric, agricultural land, forest cover, water bodies, barren land, and wetlands. Each pixel in a satellite raster is assigned exactly one class label.
+
+The NDVI index is computed as (NIR - RED) / (NIR + RED). Values close to 1.0 indicate dense vegetation. Values near 0 indicate bare soil. Negative values typically represent water or cloud shadow.
+
+A road network graph G has nodes as intersections and edges as road segments. Each edge carries attributes: length in meters, road type, speed limit, and surface quality. Shortest path is computed using Dijkstra over edge weights.
+
+OSMnx fetches street networks from OpenStreetMap using a place name or bounding polygon. The returned graph is a MultiDiGraph where each directed edge represents one lane direction.
+
+Raster reprojection transforms pixel coordinates from one CRS to another. EPSG:4326 uses geographic coordinates in degrees. EPSG:32644 is UTM Zone 44N, suitable for metric measurements in Andhra Pradesh.
+
+A GeoDataFrame stores vector geometries alongside attribute data in tabular form. Each row is a spatial feature. Supported geometry types include Point, LineString, Polygon, MultiPolygon, and GeometryCollection.
+
+Zonal statistics compute summary metrics for raster pixels that fall within each polygon boundary. Common outputs include mean, median, min, max, standard deviation, and pixel count per zone.
+
+Buffer analysis creates a zone of specified radius around each geometry. A 500-meter buffer around a river polygon captures all land within flood risk proximity. Overlapping buffers are dissolved into unified polygons.
+
+Satellite imagery from Sentinel-2 has 13 spectral bands ranging from visible to shortwave infrared. Band 4 is red, Band 8 is near-infrared. Spatial resolution is 10 meters for visible bands and 20 meters for SWIR.
+
+The Landsat archive spans from 1972 to present, enabling multi-decadal land cover change analysis. Cloud masking uses the QA_PIXEL band to exclude contaminated observations before compositing.
+
+A digital elevation model stores terrain height as a raster grid. Slope, aspect, and curvature are derived from the DEM using first and second-order finite difference methods applied across a 3x3 pixel kernel.
+
+Watershed delineation traces water flow direction from each cell downhill using a D8 algorithm. All cells draining to a common outlet form a catchment polygon. The Krishna and Godavari rivers drain major portions of Andhra Pradesh.
+
+Interpolation methods like IDW and kriging estimate attribute values at unsampled locations based on known point measurements. Kriging uses a variogram model to account for spatial autocorrelation in the data.
+
+A spatial join merges attributes from one GeoDataFrame to another based on geometric relationship. The predicate can be intersects, within, contains, or nearest. PostGIS and GeoPandas both support spatial join operations.
+
+Topology validation checks that polygon rings are closed, edges do not self-intersect, and multipart geometries share no interior area. Invalid geometries cause errors in overlay and buffer operations.
+
+STAC, the SpatioTemporal Asset Catalog, is a specification for indexing geospatial data. Each STAC item represents one scene and carries metadata for datetime, bounding box, CRS, and links to asset files.
+
+Planetary Computer hosts petabytes of analysis-ready geospatial data including Sentinel-2, Landsat, MODIS, and Copernicus DEM. Access is via STAC API with signed URLs returned per asset.
+
+Change detection compares two rasters acquired at different times. Per-pixel difference in NDVI highlights vegetation loss or gain. Thresholding the difference image produces a binary change mask.
+
+Feature extraction from satellite imagery identifies objects such as buildings, roads, water bodies, and agricultural plots using either pixel classification or deep learning segmentation models.
+
+A confusion matrix evaluates classification accuracy by comparing predicted labels to reference labels. Overall accuracy, precision, recall, F1-score, and kappa coefficient are standard metrics.
+
+Geometric correction aligns satellite images to a reference coordinate system using ground control points. Residual error after correction is measured in pixels and should be below 0.5 for high-accuracy products.
+
+Spectral signature analysis plots reflectance values across bands for different land cover types. Urban surfaces have flat, moderate reflectance. Vegetation shows a sharp rise from red to NIR, called the red edge.
+
+Building footprint extraction uses high-resolution imagery with CNNs trained to detect roof boundaries. Outputs are polygon shapefiles with attributes for area, perimeter, and centroid coordinates.
+
+Flood mapping uses SAR imagery because radar penetrates clouds. Sentinel-1 C-band backscatter drops sharply over open water. Comparing pre-flood and flood-event SAR images reveals inundated areas.
+
+A tile pyramid divides a large raster into fixed-size tiles at multiple zoom levels. Web map services like XYZ tile servers use this structure to stream imagery to clients at interactive speeds.
+
+Coordinate transformation using pyproj converts between CRS with sub-millimeter precision. Always define the source and target CRS explicitly. Never assume EPSG:4326 is the default input.
+
+Geostationary satellites like INSAT-3D capture imagery every 15 minutes over the Indian subcontinent. They are used for cloud tracking, rainfall estimation, and land surface temperature monitoring.
+
+Network analysis on road graphs computes isochrones, which are polygons enclosing all reachable locations within a given travel time. They are useful for service area planning around hospitals, schools, or emergency stations.
+
+The Haversine formula computes the great-circle distance between two points on a sphere given their latitudes and longitudes. It is accurate for distances up to a few thousand kilometers where Earth's ellipsoidal shape is negligible.
+
+Rasterization converts vector polygons into a raster grid by burning a value into all pixels whose centers fall inside the polygon boundary. The output resolution must match the target analysis grid.
+
+Point cloud data from LiDAR stores 3D coordinates and intensity for each return pulse. Ground points are classified using height filters. Buildings and vegetation rise above the ground surface.
+
+Spatial autocorrelation measures whether similar values cluster in space. Moran's I statistic ranges from -1 to 1. Positive values indicate clustering. Zero indicates spatial randomness. Negative values indicate dispersion.
+
+Multi-temporal compositing selects the best pixel across a stack of images based on criteria such as minimum cloud cover, maximum NDVI, or median reflectance. The result is a single cloud-free image.
+
+Semantic segmentation assigns a class label to every pixel in an image. Models like DeepLabV3 and SegFormer are trained on labeled satellite datasets to classify land cover at per-pixel resolution.
+
+The WGS84 ellipsoid defines Earth's shape for global coordinate systems. Semi-major axis is 6378137 meters. Flattening is 1/298.257. GPS coordinates are referenced to this ellipsoid.
+
+A fishnet grid divides a study area into equal-sized rectangular cells. Each cell aggregates point or raster data within its boundary for spatial analysis at a uniform spatial resolution.
+
+Remote sensing vegetation indices beyond NDVI include EVI for canopy correction, SAVI for sparse vegetation on bright soil, and NDWI for water body delineation using green and NIR bands.
+
+A spatial database like PostGIS stores geometries in indexed columns. Queries use ST_Intersects, ST_Contains, ST_Buffer, and ST_Distance functions. Spatial indexes use R-tree structures for fast bounding box lookups.
+
+Georeferencing assigns real-world coordinates to a scanned map or uncalibrated image using control points with known locations. The transformation model can be affine, polynomial, or thin-plate spline.
+
+Land cover maps derived from satellite data are validated against field survey points collected using GPS. A stratified random sampling design ensures each class is adequately represented in the validation set.
+
+Time series analysis of NDVI reveals crop growth cycles, deforestation events, and seasonal vegetation patterns. Breakpoint detection algorithms identify sudden drops that may indicate land use change.
+
+Object-based image analysis groups adjacent pixels with similar spectral and spatial properties into segments before classification. This reduces salt-and-pepper noise compared to per-pixel classification.
+
+The road centreline network in OpenStreetMap is attributed with highway type: motorway, trunk, primary, secondary, tertiary, residential, and track. Each type implies different traversal speed and access rules.
+
+Contour lines connect points of equal elevation on a topographic map. Standard contour intervals are 10, 20, or 50 meters depending on terrain relief. Contours never cross or branch.
+
+A spatial cluster algorithm like DBSCAN groups point features that are within a specified distance of each other. It requires no prior specification of cluster count and naturally identifies outlier points.
+
+Sentinel-1 and Sentinel-2 data are freely available through the Copernicus Open Access Hub and Planetary Computer. Scene metadata includes acquisition date, tile ID, orbit direction, and cloud cover percentage.
+
+Hydrological analysis derives stream networks from DEM by filling sinks, computing flow direction, accumulating flow, and thresholding accumulation above a minimum contributing area.
+
+A coordinate reference system has four components: datum, projection, units, and origin. Mismatched CRS between datasets is the most common source of geometric errors in spatial analysis pipelines.
+
+Solar angle and terrain aspect together determine the amount of solar radiation received at each surface location. South-facing slopes in the northern hemisphere receive more direct solar energy than north-facing ones.
+
+Urban heat island effect is detectable in thermal infrared bands. Landsat Band 10 measures land surface temperature. Impervious surfaces like asphalt and rooftops are significantly warmer than vegetated areas.
+
+GeoJSON is a lightweight format for encoding geographic data as JSON. It supports Point, LineString, Polygon, MultiPoint, MultiLineString, MultiPolygon, and GeometryCollection types with optional properties.
+
+A spatial index accelerates geometric queries by partitioning space into a tree structure. STRtree in Shapely and the R-tree in PostGIS reduce nearest-neighbor and intersection queries from O(n) to O(log n).
+
+Orthorectification corrects for terrain displacement in satellite images using a DEM and the sensor's imaging geometry. The result is a planimetrically correct image where distances can be measured directly.
+
+Agricultural parcel mapping uses multi-temporal satellite data to delineate field boundaries based on spectral contrast between adjacent crops or between crop and bare soil.
+
+The resolution of a raster defines the ground area represented by each pixel. A 10-meter resolution means each pixel covers 100 square meters. Resampling to a coarser resolution aggregates neighboring pixels.
+
+Aerial photography provides sub-meter resolution imagery suitable for building detection, road extraction, and tree canopy mapping. Photogrammetric processing produces orthoimage mosaics and point clouds.
+
+Spatial interpolation of rainfall data from rain gauge stations uses kriging or IDW to produce continuous precipitation raster surfaces for hydrological modeling.
+
+The map projection Mercator preserves angles and shape locally but distorts area at high latitudes. It is unsuitable for area measurement. Equal-area projections like Albers are preferred for area statistics.
+
+Coastal zone mapping monitors shoreline change over time using multi-date satellite images. NDWI delineates the water-land boundary. Comparing boundaries across years quantifies erosion or accretion rates.
+
+Attribute queries filter spatial features by non-geometric properties. A query selecting all polygons where land_use equals forest and area greater than 10 hectares returns only large forested parcels.
+
+Vector overlay operations include union, intersection, difference, and symmetric difference. They combine geometries from two layers to produce a new layer representing spatial relationships between features.
+
+Spatial resolution, spectral resolution, temporal resolution, and radiometric resolution are the four key characteristics of any satellite sensor. Each trades off against the others given physical and cost constraints.
+
+The EPSG registry maintains standardized codes for coordinate reference systems worldwide. EPSG:4326 is WGS84 geographic. EPSG:3857 is Web Mercator used in web maps. EPSG:32644 is UTM Zone 44N.
+
+Ground truth collection for supervised classification involves visiting sample locations in the field and recording the actual land cover. GPS coordinates, photos, and class labels are recorded per sample point.
+
+A raster mask is a binary grid where pixels with value 1 are included in analysis and pixels with value 0 are excluded. Cloud masks, study area masks, and water masks are common examples in remote sensing workflows.
+
